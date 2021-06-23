@@ -35,8 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -47,7 +49,6 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
@@ -55,7 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,7 +64,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Model\IImutableList.cs" />
+    <Compile Include="Model\ImutableList.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\Commands\CommandHandler.cs" />
+    <Compile Include="ViewModel\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModel\Converters\ListBoxIndexConverter.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -93,6 +101,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Ok.png" />
+    <Resource Include="Images\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations">
+      <Version>2021.1.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
