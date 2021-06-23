@@ -9,6 +9,9 @@ namespace TestTask.ViewModel
         private string _newValue;
         IImutableList<string> _data;
 
+        /// <summary>
+        /// Данные списка
+        /// </summary>
         public IImutableList<string> Data
         {
             get
@@ -22,6 +25,9 @@ namespace TestTask.ViewModel
             }
         }
 
+        /// <summary>
+        /// Новое значение для добавления в список
+        /// </summary>
         public string NewValue
         {
             get
@@ -40,7 +46,7 @@ namespace TestTask.ViewModel
             NewValue = "";
             Data = new ImutableList<string>();
 
-            // Формирем демо данные
+            // Формируем демо данные
             Data = Data.Add("John");
             Data = Data.Add("Alice");
             Data = Data.Add("William");
@@ -55,12 +61,18 @@ namespace TestTask.ViewModel
             Data = Data.Add("Rob");
         }
 
+        /// <summary>
+        /// Нажатие кнопки добавить элемент
+        /// </summary>
         public ICommand ClickOkCommand => new CommandHandler(() =>
         {
             Data = Data.Add(NewValue);
             NewValue = "";
         });
 
+        /// <summary>
+        /// Нажатие кнопки удалить элемент
+        /// </summary>
         public ICommand DeleteItemCommand => new RelayCommand<int>((index) =>
         {
             Data = Data.Delete(index);
